@@ -1,0 +1,9 @@
+Video 4
+Compiles code into a .NET Assembly
+Projects in Solution
+There is multiple projects in one solutions
+Projects contains all the code and settings files
+What is the purpose of the .NET Framework Runtime (CLR)?
+	-It is what your program runs inside of ... it protects the user from malicious code, and handles memory management and other runtime tasks.
+
+
