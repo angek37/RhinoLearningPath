@@ -1,6 +1,6 @@
 # Jump Start de programación en C#
 ## Programación Orientada a Objetos
-Qué es un Objeto ?
+¿Qué es un Objeto ?
 - Un objeto generalmente es algo
 - Un objeto generalmente tiene datos
 - Un objeto generalmente realiza acciones
@@ -12,7 +12,6 @@ Las características de la programación orientada a objeto son:
  
  C# es un *Managed Lenguage* esto quiere decir que depende de servicios que le provee un *runtime enviroment*, el *Managed Code* es ejecutado por el *Common Language Runtime (CLR)*, esto le da ciertas ventajas, tales como, una administración automática de memoria, manejo de excepciones, tipos estándar,  y seguridad.
  Todos los tipos en C# tienen un *Common base* - **Object**.
- 
 - Existen 3 categorías de tipos
 	- Value types - Apuntan directamente a los datos
 		- Int
@@ -136,7 +135,6 @@ internal class BaseClass
 		Console.WriteLine("BaseClass");
 	}
 }
-
 // Llaman al método de su propia clase 
 internal class DerivedOverride : BaseClass
 {
@@ -365,3 +363,105 @@ Tipos de encriptación
 Es una forma de encriptar, los más comunes algoritmos son MD5, SHA. El hashing es rápido y es muy usado para almacenar contraseñas, comparar archivos, etc. El hashing genera una cadena para los datos que se introduzcan y siempre es el mismo para esos datos, sin embargo, no se garantiza que el hash sea único, por lo que para datos sensibles es recomendable usar algoritmos que generen una cadena más larga, lo cual reduce las probabilidades de que ocurrar colisiones (SHA256 o greater).
 - Simétrico y Asimétrico
 En el encriptado simétrico se realiza la encriptación y desencriptación con una sola llave (AES recommended), en la asimétrica se requiere una llave para cada una (RSA most popular).
+[Ejemplos](https://github.com/angek37/RhinoLearningPath/blob/master/Jump%20Start%20de%20Programaci%C3%B3n%20en%20C#/ValidationsAndEncryption/ValidationsAndEncryption/Program.cs)
+## File System
+### Leer y escribir *archivos*
+Los archivos permiten mostrar datos existentes a los usuarios, serializar objetos fuera de memoria, persistir datos a través de sesiones. Ejemplo:
+```C#
+var dir = System.IO.Directory.GetCurrentDirectory();
+var file = System.IO.Path.Combine(dir, "File.txt");
+var content = "how now brown cow?";
+// write
+System.IO.File.WriteAllText(file, content);
+// read
+var read = System.IO.File.ReadAllText(file);
+Trace.Assert(read.Equals(content));
+```
+### Encontrar archivos
+```C#
+// special folders
+var docs = Environment.SpecialFolder.MyDocuments;
+var app = Environment.SpecialFolder.CommonApplicationData;
+var prog = Environment.SpecialFolder.ProgramFiles;
+var desk = Environment.SpecialFolder.Desktop;
+// appplication folder
+var dir = System.IO.Directory.GetCurrentDirectory();
+// isolated storage folder(s)
+var iso = IsolatedStorageFile
+	.GetStore(IsolatedStorageScope.Assembly, "Demo")
+	.GetDirectoryNames("*");
+// manual path
+var temp = new System.IO.DirectoryInfo("c:\\temp");
+```
+### Modificar archivos
+```C#
+var dir = System.IO.Directory.GetCurrentDirectory();
+// files
+foreach (var item in System.IO.Directory.GetFiles(dir))
+	Console.WriteLine(System.IO.Path.GetFileName(item)); // enlista los archivos del directorio seleccionado
+// rename / move
+var path1 = "c:\\temp\\file1.txt";
+var path2 = "c:\\temp\\file2.txt";
+System.IO.File.Move(path1, path2);
+// file info
+var info = new System.IO.FileInfo(path2);
+Console.WriteLine("{0}kb", info.Length / 1000);
+```
+## Web Services
+Los web services encapsulan la implementación, permiten a los sistemas clientes comunicar servidores a través de los protocolos web (HTTP, GET, POST, etc), y son importantes para los *Service Oriented Architecture* (SOA).
+### SOAP
+SOAP es un estándar para regresar datos estructurados desde un Web Service como un *XML*
+```XML
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap.envelope">
+	<soap:Header>
+	</soap:Heaader>
+	<soap:Body>
+		<m:GetStockPrice xmlns:m="http://www.example.org/stock">
+			<m:StockName>IBM</m:StockName>
+		</m:GetStockPrice>
+	</soap:Body>
+</soap:Envelope>
+```
+### REST
+REST se esta convirtiendo en un estándar de la industrial, este no require *XML parsing* o un cabezal de mensaje, generalmente es legible para los humanos, además de usar un ancho de banda menor a SOAP, los servicios REST usualmente regresan un *XML* o *JSON*.
+*JSON* es **JavaScript Object notation**, estos son más ligeros que la carga de un *XML* (o *SOAP*)
+### Programación Asíncrona
+Asíncrona maximiza los recursos en los sistemas multicore, permitiendo a las unidades de trabjo por separado y completo. La programación asíncrona libera las llamadas al sistemas, especialmente una interfaz de usuario, como para no esperar por operaciones largas.
+## LINQ
+Tipos de acceso a una base de datos
+- Low-level
+	- Manual queries
+	- DbDataReader
+- Object Relationshio Models (ORM)
+	- Conceptual Modelling
+	- Entity Framework, Hibernate, CSLA, Dapper
+### Language Integrated Query
+LINQ es un lenguage de consulta de propositos generales, esta integrado en parte de los lenguajes de *.Net* es *Type Safe* y tiene Intellisense, incluye operadores como Traversal, filtro y proyección.
+El primer pasa consiste en crear el contexto, quién es el que se encarga de administrar todas las conexiones de la base de datos.
+```C#
+var context = new DBEntities();
+```
+Las consultas se realizan con una sintáxis de C#
+```C#
+var products = context.Products;
+foreach(var product in products
+	.Where(x => x.Name.Countains("o"))) // La consulta Where crea una instancia 'x' para seleccionar los que cumplen la condición
+{
+	Console.WriteLine(product.Name);
+}
+```
+Podemos obtener únicamente el primer resultado y además añadir una condición
+```C#
+var Prod = products.First(x => x.Name.StartsWith("c"));
+```
+Además realizar modificaciones sobre un registro
+```C#
+Prod.Name = "ChocoRoles Marinela";
+context.SaveChanges(); // El contexto revisa si se han realizado cambios para realizarlos en la DB
+```
+Otra acción básica, eliminar un registro.
+```C#
+context.Products.Remove(Prod);
+context.SaveChanges();
+```
