@@ -86,7 +86,7 @@ Para agregar un remoto el comando es:
 ```bash
 git remote add (shortname) (url)
 ```
-Agregar y renombrar remotos:
+Eliminar y renombrar remotos:
 ```bash
 git remote rename (old) (new)
 git remote rm (shortname)
