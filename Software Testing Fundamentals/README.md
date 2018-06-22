@@ -1,10 +1,10 @@
 # Software Testing Fundamentals
 ## Testing Fundamentals
-Testing es el proceso de examinación de una aplicación para asegurarse de que los requerimientos están adecuadamente diseñados y cumplen las expectativas de calidad. El testing mide la calidad de una aplicación o proyecto. EL testing beneficia a los usuarios finales en forma que los resultados de testing ofrecen mejor usabilidad y confiabilidad.
+Testing es el proceso de examinación de una aplicación para asegurarse de que los requerimientos están adecuadamente diseñados y cumplen las expectativas de calidad. El testing mide la calidad de una aplicación o proyecto. El testing beneficia a los usuarios finales en forma que los resultados de testing ofrecen mejor usabilidad y confiabilidad.
 #### Medición de calidad de software
-Existen muchas diferentes tipo de metricas (medidas estándar) para la calidad de software. Las metricas comunmente incluyen:
-- Metricas de rendimiento
-- Metricas de confiabilidad
+Existen muchas diferentes tipo de métricas (medidas estándar) para la calidad de software. Las metricas comunmente incluyen:
+- Métricas de rendimiento
+- Métricas de confiabilidad
 ### Metodologías para el Desarrollo de Software
 Existen muchos modelos diferentes para administrar el desarrollo de proyectos, cada uno tiene sus ventajas y desventajas. Pueden dividirse en dos categorías mayores:
 - Desarrollo Secuencial
@@ -76,6 +76,7 @@ Un **user story** comunica la funcionalidad del valor de un usuario final del pr
 ### Software Testability
 #### **TEST-DRIVEN DEVELOPMENT**
 **Test-Driven Development** es una técnica que usa *unit test* para guiar el diseño de software. Requiere que desarrolles los casos de prueba antes de desarrollar el código. Los desarrolladores entonces desarrollan funcionalmente el paso de los casos de prueba existentes.
+
 ![TDD](http://haselt.com/wp-content/uploads/2016/02/stride-nyc-test-driven-development-chart-700x400.jpg)
 
 #### Testing Hooks
