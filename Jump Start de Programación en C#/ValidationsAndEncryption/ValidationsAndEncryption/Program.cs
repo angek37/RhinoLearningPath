@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -159,16 +160,20 @@ namespace ValidationsAndEncryption
             {
                 throw;
             }
+            Person p = new Person();
+            p.SetName("");
         }
     }
 
     public class Person
     {
+        //[Required]
         public string Name { get; protected set; }
+
         public void SetName(string value)
         {
             // validate Input
-            Contract.Requires(!string.IsNullOrWhiteSpace(value), "value is empty");
+            Contract.Requires<ArgumentNullException>(string.IsNullOrWhiteSpace(value), "value is empty");
             this.Name = value;
         }
 
