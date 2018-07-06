@@ -10,6 +10,7 @@
 
     <title>Navbar Bootstrap</title>
     <style>
+
         header.masthead{
             text-align: center;
             color: white;
@@ -18,45 +19,66 @@
             background-attachment: scroll;
             background-position: center center;
             background-size: cover;
-            width: 100vw;
-            height: 100vh;
+            padding-top: 300px;
+            padding-bottom: 200px;
+        }
+
+        @media (min-width: 992px) {
+            #mainNav{
+                padding-top: 25px;
+                padding-bottom: 25px;
+                transition: padding-top 0.3s, padding-bottom 0.3s;
+                border: none;
+                background-color: transparent;
+            }
+            #mainNav .navbar-brand{
+                font-size: 1.75em;
+                transition: all 0.3s;
+            }
+            #mainNav .navbar-nav .nav-item .nav-link{
+                padding: 1.1em 1em !important;
+            }
+            #mainNav.navbar-shrink {
+                padding-top: 0;
+                padding-bottom: 0;
+                background-color: black;
+            }
+            #mainNav.navbar-shrink .navbar-brand{
+                font-size: 1.25em;
+                padding: 12px 0;
+            }
         }
     </style>
 </head>
 <body id="top">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#top">Navbar</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navbarResponsive" aria-controls="" aria-expanded="false"
-                    aria-label="Toggle Navigation">Menu <i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="navbar-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navDropdown"
-                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu" aria-labelledby="navDropdown">
-                            <a href="#" class="dropdown-item">Sub-Link 1</a>
-                            <a href="#" class="dropdown-item">Sub-Link 2</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">Sub-Link 3</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link1">Link1</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link2">Link2</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link3">Link3</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link4">Link4</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link5">Link5</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#top">Navbar</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle Navigation">Menu <i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto" >
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Sub-Link 1</a>
+                        <a class="dropdown-item" href="#">Sub-Link 2</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Sub-Link 3</a>
+                    </div>
+                </li>
 
-                    <form class="form-inline my-2 my-lg-0">
-                        <input type="text" class="form-control mr-sm-2">
-                        <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-                    </form>
-                </ul>
-            </div>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link1">Link1</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link2">Link2</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link3">Link3</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link4">Link4</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#link5">Link5</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <header class="masthead">
         <div class="container">
             <div class="intro-text"></div>
@@ -80,10 +102,44 @@
 
         </ul>
     </div>
+    <div class="container m-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Alice in Wonderland</a></li>
+                <li class="breadcrumb-item"><a href="#">All Chapters</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Chapter 7: A Mad Tea-Party</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container m-5">
+        <h4>Chapters</h4>
+        <div>
+            <nav aria-label="Chapter Links">
+                <ul class="pagination pagination-md justify-content-center">
+                    <li class="page-item disabled"><a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    </li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="js/navbar-shrinker.js"></script>
 </body>
 </html>
