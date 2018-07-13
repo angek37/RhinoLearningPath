@@ -7,3 +7,5 @@ bin/
 packages/
 .idea/
 node_modules/
+Scripts/
+Content/
