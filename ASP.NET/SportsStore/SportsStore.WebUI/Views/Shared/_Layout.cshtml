@@ -4,19 +4,37 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" rel="stylesheet"  integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <title>@ViewBag.Title</title>
+    <style>
+        .navbar-right {
+            float: right !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar bg-dark">
-        <a class="navbar-brand text-white" href="#">SPORTS STORE</a>
+        <a class="navbar-brand text-white" href="#">
+            <span class="d-none d-sm-block">SPORTS STORE</span>
+            <div class="d-sm-none">SPORTS</div>
+            <div class="d-sm-none">STORE</div>
+        </a>
         @Html.Action("Summary", "Cart")
     </div>
-    <div class="row">
-        <div id="categories" class="col-sm-3 ml-2 mt-2">
-            @Html.Action("Menu", "Nav")
-        </div>
-        <div class="col-sm-8">
-            @RenderBody()
+    <div class="d-md-none">
+        @Html.Action("Menu", "Nav", new { horizontalLayout = true})
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="categories" class="col-md-3 ml-2 mt-2 d-none d-md-block">
+                @Html.Action("Menu", "Nav")
+            </div>
+            <div class="col-sm-12 col-md-8">
+                @RenderBody()
+            </div>
         </div>
     </div>
 </body>

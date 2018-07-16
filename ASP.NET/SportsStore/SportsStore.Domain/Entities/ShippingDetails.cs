@@ -8,8 +8,11 @@ namespace SportsStore.Domain.Entities
         public string Name { set; get; }
 
         [Required(ErrorMessage = "Please enter the first address line")]
+        [Display(Name = "Line 1")]
         public string Line1 { set; get; }
+        [Display(Name = "Line 2")]
         public string Line2 { set; get; }
+        [Display(Name = "Line 3")]
         public string Line3 { set; get; }
 
         [Required(ErrorMessage = "Please enter a city name")]
