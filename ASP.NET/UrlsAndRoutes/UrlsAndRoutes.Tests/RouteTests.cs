@@ -155,25 +155,25 @@ namespace UrlsAndRoutes.Tests
         //        new {id = "All", catchall = "Delete/Perm"});
         //}
 
-        [TestMethod] // Añade Constraints a las rutas con expresiones regulares
-        public void TestIncomingRoutes()
-        {
-            TestRouteMatch("~/", "Home", "Index");
-            TestRouteMatch("~/Home", "Home", "Index");
-            TestRouteMatch("~/Home/Index", "Home", "Index");
+        //[TestMethod] // Añade Constraints a las rutas con expresiones regulares
+        //public void TestIncomingRoutes()
+        //{
+        //    TestRouteMatch("~/", "Home", "Index");
+        //    TestRouteMatch("~/Home", "Home", "Index");
+        //    TestRouteMatch("~/Home/Index", "Home", "Index");
 
-            TestRouteMatch("~/Home/About", "Home", "About");
-            TestRouteMatch("~/Home/About/MyId", "Home", "About", new {id = "MyId"});
-            TestRouteMatch("~/Home/About/MyId/More/Segments", "Home", "About",
-                new
-                {
-                    id = "MyId",
-                    catchall = "More/Segments"
-                });
+        //    TestRouteMatch("~/Home/About", "Home", "About");
+        //    TestRouteMatch("~/Home/About/MyId", "Home", "About", new {id = "MyId"});
+        //    TestRouteMatch("~/Home/About/MyId/More/Segments", "Home", "About",
+        //        new
+        //        {
+        //            id = "MyId",
+        //            catchall = "More/Segments"
+        //        });
 
-            TestRouteFail("~/Home/OtherAction");
-            TestRouteFail("~/Account/Index");
-            TestRouteFail("~/Account/About");
-        }
+        //    TestRouteFail("~/Home/OtherAction");
+        //    TestRouteFail("~/Account/Index");
+        //    TestRouteFail("~/Account/About");
+        //}
     }
 }

@@ -57,14 +57,24 @@ namespace UrlsAndRoutes
 
             routes.MapMvcAttributeRoutes(); // Enabling Attribute Routing
 
-            routes.MapRoute("Default", "{controller}/{action}/{id}",
+            // Ya no se ocupa el array para especificar el namespace
+            // porque no hay ambiguedad de nombres de controllers
+            //routes.MapRoute("Default", "{controller}/{action}/{id}",
+            //    new
+            //    {
+            //        controller = "Home",
+            //        action = "Index",
+            //        id = UrlParameter.Optional
+            //    },
+            //    new[] { "UrlsAndRoutes.Controllers" });
+
+            routes.MapRoute("MyRoute", "{controller}/{action}/{id}",
                 new
                 {
                     controller = "Home",
                     action = "Index",
                     id = UrlParameter.Optional
-                },
-                new[] {"UrlsAndRoutes.Controllers"});
+                });
         }
     }
 }
