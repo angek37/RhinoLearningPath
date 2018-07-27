@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BusinessType.Account>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Accounts</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Country</th>
+            <th scope="col">Created on</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var account in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(account.Name, "Edit", new
+                {
+                    id = account.AccountId
+                })
+            </td>
+            <td>@account.City</td>
+            <td>@account.State</td>
+            <td>@account.Country</td>
+            <td>@account.CreatedOn.ToShortDateString()</td>
+        </tr>
+    }
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="5"><a href="@Url.Action("Edit")">
+           <i class="fas fa-plus-circle" style="font-size: 24px;"></i>
+        </a></td>
+    </tr>
+    </tfoot>
+</table>
