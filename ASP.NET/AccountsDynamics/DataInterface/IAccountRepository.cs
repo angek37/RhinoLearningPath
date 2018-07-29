@@ -9,5 +9,7 @@ namespace DataInterface
         List<Account> GetAccounts();
 
         Guid CreateAccount(Account account);
+
+        void DeleteAccount(Guid id);
     }
 }

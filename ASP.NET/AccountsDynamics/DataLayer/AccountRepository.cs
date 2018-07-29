@@ -49,6 +49,20 @@ namespace DataLayer
             }
         }
 
+        public void DeleteAccount(Guid id)
+        {
+            try
+            {
+                ServerConnection cnx = new ServerConnection();
+                cnx.Service.Delete("account", id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         #region Private Methods
 
         private List<Account> CollectionToList(EntityCollection collection)

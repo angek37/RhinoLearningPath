@@ -22,5 +22,34 @@ namespace UI.Controllers
             List<Account> accounts = _repository.GetAccounts();
             return View(accounts);
         }
+
+        public ViewResult Edit(Guid id)
+        {
+            Account account = _repository
+                    .GetAccounts()
+                    .FirstOrDefault(a => a.AccountId == id);
+            ViewBag.Message = "Edit";
+            return View(account);
+        }
+
+        public ViewResult Create()
+        {
+            ViewBag.Message = "Create new Account";
+            return View("Edit", new Account());
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Account account)
+        {
+            _repository.CreateAccount(account);
+            return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Guid id)
+        {
+            _repository.DeleteAccount(id);
+            return RedirectToAction("List");
+        }
     }
 }

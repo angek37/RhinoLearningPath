@@ -1,0 +1,33 @@
+﻿@model BusinessType.Account
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@ViewBag.Message @Model.Name</h2>
+@using (@Html.BeginForm("Edit", "Account", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.AccountId)
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        switch (@property.PropertyName)
+        {
+            case "AccountId":
+            case "CreatedOn":
+                break;
+            default:
+                <div class="form-group">
+                    <label for="@property.PropertyName">@property.PropertyName</label>
+                    @Html.TextBox(property.PropertyName, null, new
+                    {
+                        @class = "form-control",
+                        placeholder = @property.PropertyName
+                    })
+                </div>
+                break;
+                }
+            }
+    <input type="submit" class="btn btn-primary" value="Save"/>
+}
+<br />
+@Html.ActionLink("Cancel and return", "List")
