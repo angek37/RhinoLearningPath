@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "List";
+    Layout = null;
+}
+
+<h3>This is the /Views/Common/List.cshtml View</h3>
+
+@*Change for strongly typed partial view*@
+@*@Html.Partial("MyPartial")*@
+
+@Html.Partial("MyStronglyTypedPartial", new [] {"Apple", "Orange", "Pear"})
+
+@Html.Action("Time")

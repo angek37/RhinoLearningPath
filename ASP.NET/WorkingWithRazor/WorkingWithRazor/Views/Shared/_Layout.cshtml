@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        div.Layout { background-color: lightgray; }
+        div.view { border: thin solid black; margin: 10px 0;}
+    </style>
+</head>
+<body>
+    @RenderSection("Header")
+    <div class="Layout">
+        This is part of the layout
+    </div>
+
+    @RenderSection("Body")
+    <div class="Layout">
+        This is part of the layout
+    </div>
+@*The IsSectionDefined helper takes the name of the section you want to check and returns true if the view you
+are rendering defines that section.*@
+    @if (IsSectionDefined("Footer"))
+    {
+        @RenderSection("Footer")
+    }
+    else
+    {
+        <h4>This is the default footer</h4>
+    }
+@*Making section optional*@
+    @RenderSection("scripts", false)
+    <div class="Layout">
+        This is part of the layout
+    </div>
+</body>
+</html>
