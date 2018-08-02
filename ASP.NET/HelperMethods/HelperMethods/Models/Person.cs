@@ -1,8 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using HelperMethods.Models.Metadata;
 
 namespace HelperMethods.Models
 {
-    public class Person
+    [MetadataType(typeof(PersonMetadata))]
+    public partial class Person
     {
         public int PersonId { set; get; }
         public string FirstName { set; get; }

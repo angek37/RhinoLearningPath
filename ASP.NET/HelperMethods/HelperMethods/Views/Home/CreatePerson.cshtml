@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "Create Person";
     Layout = "/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
 }
 
-<h2>CreatePerson</h2>
+<h2>CreatePerson: @Html.LabelForModel()</h2>
 
 @*@using (Html.BeginForm("CreatePerson", "Home",
         null, FormMethod.Post,
@@ -17,21 +18,52 @@
 @using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post,
     new { @class = "personClass", data_formType = "person" }))
 {
-    <div class="DataElem">
+
+    //Using the Scaffolding Helper Methods
+    <div class="column">
+        @Html.EditorForModel()
+    </div>
+
+    <div class="column">
+        @Html.EditorFor(m => m.HomeAddress)
+    </div>
+
+    @*<div class="DataElem">
         <label>PersonId</label>
-        @Html.TextBoxFor(m => m.PersonId)
+        @Html.Editor("PersonId")
     </div>
     <div class="DataElem">
         <label>First Name</label>
-        @Html.TextBoxFor(m => m.FirstName)
+        @Html.Editor("FirstName")
     </div>
     <div class="DataElem">
         <label>Last Name</label>
-        @Html.TextBoxFor(m => m.LastName)
+        @Html.EditorFor(m => m.LastName)
     </div>
     <div class="DataElem">
         <label>Role</label>
-        @Html.DropDownListFor(m => m.Role, new SelectList(Enum.GetNames(typeof(HelperMethods.Models.Role))))
+        @Html.EditorFor(m => m.Role)
     </div>
-    <input type="submit" value="Submit"/>
+    <div>
+        <label>Birth Date</label>
+        @Html.EditorFor(m => m.BirthDate)
+    </div>*@
+
+    @*<div class="DataElem">
+            <label>PersonId</label>
+            @Html.TextBoxFor(m => m.PersonId)
+        </div>
+        <div class="DataElem">
+            <label>First Name</label>
+            @Html.TextBoxFor(m => m.FirstName)
+        </div>
+        <div class="DataElem">
+            <label>Last Name</label>
+            @Html.TextBoxFor(m => m.LastName)
+        </div>
+        <div class="DataElem">
+            <label>Role</label>
+            @Html.DropDownListFor(m => m.Role, new SelectList(Enum.GetNames(typeof(HelperMethods.Models.Role))))
+        </div>*@
+    <input type="submit" value="Submit" />
 }
