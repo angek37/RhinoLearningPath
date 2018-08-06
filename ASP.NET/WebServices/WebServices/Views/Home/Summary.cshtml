@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebServices.Models.Reservation>
+    
+<div class="card-header bg-primary text-white">Reservation Summary</div>
+<div class="card-body">
+    <table class="table table-striped">
+        <thead>
+        <tr><td>ID</td><td>Name</td><td>Location</td></tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReservationId</td>
+                <td>@item.ClientName</td>
+                <td>@item.Location</td>
+                <td>
+                    <a href="@Url.Action("Remove", "Home", new{ id = item.ReservationId })" class="btn btn-primary">Remove <i class="far fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
