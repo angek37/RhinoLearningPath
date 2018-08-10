@@ -25,5 +25,4 @@ var list = function (data) {
         $("<li />").text(data[c].name).appendTo(ul);
     }
     ul.appendTo($("body"));
-    console.log("test");
 };

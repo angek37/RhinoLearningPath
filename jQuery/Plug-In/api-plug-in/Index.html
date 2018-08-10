@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 10, TVMaze Plugin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>TV Maze - TV Show Search</h1>
+    <form action="">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-10">
+                    <input type="text" class="form-control" id="showInput" placeholder="Search TV Show" required>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-secondary" type="submit" id="submitButton">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead id="tableHead">
+        <tr>
+            <td>Name</td>
+            <td>Network</td>
+            <td>Type</td>
+            <td>Image</td>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>Airdate</td>
+            <td>Episode Name</td>
+            <td>Episode Number</td>
+            <td>Season</td>
+            <td>Run Time</td>
+            <td>Summary</td>
+        </tr>
+        </thead>
+        <tbody id="episodeInfo">
+
+        </tbody>
+    </table>
+</div>
+<script src="../../jquery-3.3.1.min.js"></script>
+<script src="tvmaze.jquery.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
