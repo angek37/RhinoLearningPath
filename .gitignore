@@ -10,3 +10,5 @@ node_modules/
 Scripts/
 Content/
 fonts/
+npm-debug.log
+typings/
