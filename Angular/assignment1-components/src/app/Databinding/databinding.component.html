@@ -1,0 +1,5 @@
+<input class="form-control m-2"
+  [(ngModel)]="username">
+<p>{{ getUsername() }}</p>
+<button class="btn btn-primary"
+  [disabled]="isEmpty()" (click)="reset()">Reset</button>
