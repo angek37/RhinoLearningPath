@@ -7,7 +7,6 @@
   <div class="col-sm-12">
     <app-recipe-item
       *ngFor="let recipe of recipes"
-      [recipe]="recipe"
-      (selectedRecipe)="setRecipe(recipe)"></app-recipe-item>
+      [recipe]="recipe"></app-recipe-item>
   </div>
 </div>
