@@ -15,9 +15,9 @@
         Manage Recipe <span class="caret"></span>
       </button>
       <div class="dropdown-menu">
-        <a href="#" class="dropdown-item" (click)="sendToList()">Add Ingredients to Shopping List</a>
-        <a href="#" class="dropdown-item">Edit Recipe</a>
-        <a href="#" class="dropdown-item">Delete Recipe</a>
+        <a class="dropdown-item" (click)="sendToList()" style="cursor: pointer;">Add Ingredients to Shopping List</a>
+        <a [routerLink]="['/recipes', recipe.id, 'edit']" class="dropdown-item" style="cursor: pointer;">Edit Recipe</a>
+        <a class="dropdown-item" style="cursor: pointer;">Delete Recipe</a>
       </div>
     </div>
   </div>

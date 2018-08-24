@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {ShoppingListService} from '../../shopping-list/shopping-list.service';
-import {forEach} from '@angular/router/src/utils/collection';
+import {ActivatedRoute, Params} from '@angular/router';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,11 +10,19 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() recipe: Recipe;
+  recipe: Recipe;
 
-  constructor(private shoppingList: ShoppingListService) { }
+  constructor(private recipeService: RecipeService,
+              private shoppingList: ShoppingListService,
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activeRoute.params
+      .subscribe(
+        (params: Params) => {
+          this.recipe = this.recipeService.getRecipe(+params['id']);
+        }
+      );
   }
 
   sendToList() {
