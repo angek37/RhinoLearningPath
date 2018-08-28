@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -16,6 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-detail/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import {RecipeService} from './recipes/recipe.service';
+import {DataStorageService} from './shared/data-storage.service';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,10 @@ import {RecipeService} from './recipes/recipe.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpModule
   ],
-  providers: [RecipeService],
+  providers: [RecipeService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
