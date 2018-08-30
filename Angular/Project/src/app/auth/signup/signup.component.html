@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="email">Mail</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      ngModel
+      required
+      email
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      ngModel
+      required
+      [minlength]="6"
+      class="form-control">
+  </div>
+  <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<div class="alert alert-success mt-3" role="alert" *ngIf="signupStatus">
+  Successful Signup !
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {faTrashAlt, faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt, faPlus, faSave} from '@fortawesome/free-solid-svg-icons';
 import {FormControl, FormGroup, FormArray, Validators} from '@angular/forms';
 import {RecipeService} from '../recipe.service';
 import {Recipe} from '../recipe.model';
@@ -15,6 +15,7 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   trashIcon = faTrashAlt;
   addIcon = faPlus;
+  saveIcon = faSave;
   recipeForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService, private nav: Router) { }

@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSignin(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="email">Mail</label>
+    <input
+      type="text"
+      id="email"
+      name="email"
+      ngModel
+      required
+      email
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      ngModel
+      required
+      class="form-control">
+  </div>
+  <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Sign In</button>
+</form>
+<div class="alert alert-success mt-3" role="alert" *ngIf="signinStatus">
+  Successful login !
+</div>
+<div class="alert alert-danger mt-3" role="alert" *ngIf="error">
+  Login Failed, please verify your credentials !
+</div>

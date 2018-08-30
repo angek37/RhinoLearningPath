@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a routerLink="" class="navbar-brand">Recipe Book</a>
+  <a routerLink="" class="navbar-brand">Recipe Book <fa-icon [icon]="bookIcon" style="color: cornflowerblue"></fa-icon></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,7 +12,20 @@
       <li class="nav-item" routerLinkActive="active">
         <a routerLink="shopping" class="nav-link" routerLinkActive="active">Shopping List</a>
       </li>
-      <li class="nav-item dropdown">
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/signup" class="nav-link" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/signin" class="nav-link" routerLinkActive="active">Login</a>
+        </li>
+      </ng-template>
+      <li>
+        <a style="cursor: pointer" class="nav-link" (click)="logout()" *ngIf="authService.isAuthenticated()">Logout</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="authService.isAuthenticated()">
         <a style="cursor: pointer;" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" appDropdown>
           Manage
         </a>
