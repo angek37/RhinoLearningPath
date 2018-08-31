@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {DataStorageService} from '../shared/data-storage.service';
+import {DataStorageService} from '../../shared/data-storage.service';
 import {faBook} from '@fortawesome/free-solid-svg-icons';
-import {AuthService} from '../auth/auth.service';
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import {AuthService} from '../auth/auth.service';
 })
 export class HeaderComponent {
   bookIcon = faBook;
-  constructor(private dataStorage: DataStorageService, private authService: AuthService) {}
+  constructor(private dataStorage: DataStorageService, public authService: AuthService) {}
 
   onSaveData() {
     this.dataStorage.storeRecipes()

@@ -3,7 +3,6 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {faTrashAlt, faPlus, faSave} from '@fortawesome/free-solid-svg-icons';
 import {FormControl, FormGroup, FormArray, Validators} from '@angular/forms';
 import {RecipeService} from '../recipe.service';
-import {Recipe} from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -101,6 +100,10 @@ export class RecipeEditComponent implements OnInit {
     } else {
       this.nav.navigate(['/recipes']);
     }
+  }
+
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
 }
