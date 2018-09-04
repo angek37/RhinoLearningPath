@@ -8,12 +8,13 @@ export const environment = {
     tenant: 'f8566acf-0bd7-4308-b436-ffd36e862087',
     clientId: 'dd7365f6-cb2a-4cc2-8297-f9860ebb8879',
     redirectUri: window.location.origin,
+    crm: 'https://valyrian.api.crm.dynamics.com/api/data/v9.0/',
     endpoints: {
-      'crm' : 'https://valyrian.api.crm.dynamics.com/api/data/v9.0/'
+      'crm' : 'https://valyrian.api.crm.dynamics.com'
     },
     navigateToLoginRequestUrl: false,
     cacheLocation: 'localStorage',
-    resource: 'https://valyrian.api.crm.dynamics.com/'
+    resource: 'https://valyrian.api.crm.dynamics.com'
   }
 };
 

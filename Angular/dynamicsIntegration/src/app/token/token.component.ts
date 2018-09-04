@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {CrmService} from '../crm/crm.service';
 
 @Component({
   selector: 'app-token',
@@ -9,7 +10,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 export class TokenComponent implements OnInit {
   token = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router, private crmSvc: CrmService) {
   }
 
   ngOnInit() {
@@ -20,6 +21,7 @@ export class TokenComponent implements OnInit {
           this.token = params['id'];
         }
       );
+    this.router.navigate(['/']);
   }
 
 }

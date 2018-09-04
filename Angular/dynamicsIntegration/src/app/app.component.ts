@@ -7,10 +7,9 @@ import {CrmService} from './crm/crm.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private crmService: CrmService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.crmService.getContacts();
   }
 
 }
