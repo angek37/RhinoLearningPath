@@ -1,10 +1,6 @@
-﻿using Plugin.DataLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Microsoft.Xrm.Sdk;
+using Plugin.DataLayer;
 using Plugin.BusinessType;
 using Plugin.ExtensionMethods;
 
@@ -17,25 +13,37 @@ namespace Plugin
             try
             {
                 ServerConnection cnx = new ServerConnection(serviceProvider);
+                CrmRepository crmRepository = new CrmRepository(cnx);
                 Entity entity = (Entity) cnx.context.InputParameters["Target"];
                 if (!ValidarContexto(entity, cnx))
                     return;
 
-                string nombre = entity.GetStringValue("fullname");
-                Guid contactid = entity.GetGuidValue("contactid");
-
-                Oportunidad opportunity = new Oportunidad();
-                opportunity.Name = $"OPT-{nombre}";
-                opportunity.OrderType = OrderType.BasadoEnTrabajo;
-                opportunity.ContactId = contactid;
-                opportunity.BudgetAmount = 1000;
-                opportunity.EstimatedValue = 10000;
-                opportunity.EstimatedCloseDate = DateTime.Now.AddMonths(1);
+                ListaDePrecio listaDePrecio = crmRepository.ObtenerListaDePrecios().Find(l => l.Name == "Retail");
+                Oportunidad opportunity = BuildOportunidad(entity, listaDePrecio);
+                crmRepository.CrearOportunidad(opportunity);
             }
             catch (Exception e)
             {
                 throw new InvalidPluginExecutionException();
             }
+        }
+
+
+        private Oportunidad BuildOportunidad(Entity entity, ListaDePrecio lista)
+        {
+            string nombre = entity.GetStringValue("fullname");
+            Oportunidad opportunity = new Oportunidad
+            {
+                Name = $"OPT-{nombre}",
+                OrderType = OrderType.BasadoEnTrabajo,
+                ContactId = new EntityReference("contact", entity.Id),
+                BudgetAmount = 1000,
+                EstimatedValue = 10000,
+                EstimatedCloseDate = DateTime.Now.AddMonths(1),
+                PriceList = new EntityReference("pricelevel", lista.Id),
+                TransactionCurrencyId = new EntityReference("transactioncurrency", lista.TransactionCurrencyId)
+            };
+            return opportunity;
         }
 
         private bool ValidarContexto(Entity entity, ServerConnection cnx)

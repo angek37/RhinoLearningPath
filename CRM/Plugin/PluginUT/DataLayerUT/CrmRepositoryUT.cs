@@ -5,13 +5,13 @@ using Microsoft.Xrm.Sdk.Query;
 using Plugin.BusinessType;
 using Plugin.ExtensionMethods;
 
-namespace Plugin.DataLayer
+namespace PluginUT.DataLayerUT
 {
-    public class CrmRepository
+    public class CrmRepositoryUT
     {
-        private ServerConnection _cnx = default(ServerConnection);
+        private ServerConnectionUT _cnx = default(ServerConnectionUT);
 
-        public CrmRepository(ServerConnection cnx)
+        public CrmRepositoryUT(ServerConnectionUT cnx)
         {
             _cnx = cnx;
         }
