@@ -1,0 +1,17 @@
+﻿@model ConsumingWS.Models.Operands
+
+@{
+    ViewBag.Title = "Calculator";
+    Layout = "../_LayoutPage1.cshtml";
+}
+
+<h2>Calculator</h2>
+<p>@Model</p>
+@using (@Html.BeginForm("Result", "Calculator", FormMethod.Post))
+{
+    <p>Number 1</p><br/>
+    @Html.TextBoxFor(m => m.num1)
+    <p>Number 2</p><br/>
+    @Html.TextBoxFor(m => m.num2)
+    <input type="submit" value="Calcular"/>
+}
