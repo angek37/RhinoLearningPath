@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Plugin2UT.DataLayerUT
+namespace Plugin3UT.DataLayerUT
 {
     public class ServerConnectionUT : IDisposable
     {

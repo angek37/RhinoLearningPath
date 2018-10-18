@@ -1,29 +1,28 @@
 ﻿using System;
 using Microsoft.Xrm.Sdk;
-using Microsoft.Xrm.Sdk.Metadata;
-using Plugin2.DataLayer;
-using Plugin2.ExtensionMethods;
+using Plugin3.DataLayer;
+using Plugin3.BusinessType;
+using Plugin3.ExtensionMethods;
 
-namespace Plugin2
+namespace Plugin3
 {
-    public class EdadDeContacto : IPlugin
+    public class AjustaEdadContacto : IPlugin
     {
         public void Execute(IServiceProvider serviceProvider)
         {
             try
             {
                 ServerConnection cnx = new ServerConnection(serviceProvider);
-                Entity entity = (Entity) cnx.context.InputParameters["Target"];
-                if (!ValidaContexto(entity, cnx))
+                Entity entity = cnx.Context.InputParameters["Target"] as Entity;
+                if (!ValidaContexto(cnx, entity))
                     return;
 
                 DateTime birthdate = entity.GetDateTimeValue("birthdate");
-                int edad = CalculaEdad(birthdate);
-                entity["rs_edad"] = edad;
+                entity["rs_edad"] = CalculaEdad(birthdate);
             }
             catch (Exception e)
             {
-                throw new InvalidPluginExecutionException("Plugin2.EdadDeContacto: " + e.Message);
+                throw new InvalidPluginExecutionException("Plugin3.AjustaEdadContacto: " + e.Message);
             }
         }
 
@@ -32,12 +31,13 @@ namespace Plugin2
             return (((DateTime.Now.Year - birthdate.Year) * 12) + DateTime.Now.Month - birthdate.Month) / 12;
         }
 
-        private bool ValidaContexto(Entity entity, ServerConnection cnx)
+        public bool ValidaContexto(ServerConnection cnx, Entity entity)
         {
+            if (cnx.Context.MessageName.ToLower() != "update")
+                return false;
             if (entity.LogicalName.ToLower() != "contact")
                 return false;
-            if (cnx.context.MessageName.ToLower() != "create")
-                return false;
+
             if (!(entity.Contains("birthdate") && entity["birthdate"] != null))
                 return false;
 

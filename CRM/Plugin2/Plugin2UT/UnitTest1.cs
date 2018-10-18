@@ -1,18 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Plugin2.BusinessType;
+using Plugin2UT.DataLayerUT;
 
 namespace Plugin2UT
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestInitialize]
-        public void Initialize()
-        {
-
-        }
-
+       
         [TestMethod]
         public void CalculaEdadContacto()
         {
@@ -29,15 +25,5 @@ namespace Plugin2UT
             Assert.AreEqual(23, edad);
         }
 
-        [TestMethod]
-        public void CreacionDeContacto()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-
-        }
     }
 }
