@@ -12,3 +12,4 @@ Content/
 fonts/
 npm-debug.log
 typings/
+*.snk
