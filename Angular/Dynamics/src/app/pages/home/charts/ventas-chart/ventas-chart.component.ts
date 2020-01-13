@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import {CrmService} from '../../../../services/crm.service';
 

@@ -8,7 +8,7 @@ import {MsAdalAngular6Service} from 'microsoft-adal-angular6';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private route: Router, private adalSvc: MsAdalAngular6Service) { }
+  constructor(private adalSvc: MsAdalAngular6Service) { }
 
   ngOnInit() {
     this.adalSvc.logout();
