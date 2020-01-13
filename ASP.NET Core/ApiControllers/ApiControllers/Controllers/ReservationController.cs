@@ -42,7 +42,6 @@ namespace ApiControllers.Controllers
                 patch.ApplyTo(res);
                 return Ok();
             }
-
             return NotFound();
         }
 
