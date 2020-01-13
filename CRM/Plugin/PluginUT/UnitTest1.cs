@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
+using Moq;
+using Moq.Language.Flow;
+using Plugin;
 using Plugin.BusinessType;
 using PluginUT.DataLayerUT;
 
@@ -38,6 +41,27 @@ namespace PluginUT
             Guid result = _crmRepository.CrearOportunidad(op);
             // Assert
             Assert.AreNotEqual(default(Guid), result);
+        }
+
+        [TestMethod]
+        public void Plugin()
+        {
+            //var serviceProvider = new Mock<IServiceProvider>();
+            //serviceProvider
+            //    .Setup(x => x.GetService(typeof(IPluginExecutionContext)))
+            //    .Returns(new ConfigurationDbContext(Options, StoreOptions));
+
+            //var serviceScope = new Mock<IServiceScope>();
+            //serviceScope.Setup(x => x.ServiceProvider).Returns(serviceProvider.Object);
+
+            //var serviceScopeFactory = new Mock<IServiceScopeFactory>();
+            //serviceScopeFactory
+            //    .Setup(x => x.CreateScope())
+            //    .Returns(serviceScope.Object);
+
+            //serviceProvider
+            //    .Setup(x => x.GetService(typeof(IServiceScopeFactory)))
+            //    .Returns(serviceScopeFactory.Object);
         }
     }
 }
