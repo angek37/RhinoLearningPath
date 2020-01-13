@@ -13,3 +13,4 @@ fonts/
 npm-debug.log
 typings/
 *.snk
+bower_components/
